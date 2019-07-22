@@ -7,17 +7,23 @@
         <link href="index.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <h1>Hello, World!</h1>
+        <h1>Economics Simulator</h1>
 
         <h3>Phillips Curve</h3>
         <!--Graph and stuff goes here-->
         <div class="slidecontainer">
-            <input type="range" min="400" max="600" value="500" class="slider" id="myRange">
+            <input type="range" min="4.00" max="6.00" value="5.00" class="slider" step="0.01" id="myRange">
         </div>
-        <div id="demo"></div>
+        <div id="demo">
+            Current unemployment: 
+        </div>
 
         <h3>Pareto Principle</h3>
         <!--Graph and stuff goes here-->
+        <div class="slidecontainer2">
+            <input type="range" min="1" max="100" value="50" class="slider" step="1" id="myRange2">
+        </div>
+        <div id="demo2"></div>
 
         <script src="index.js"></script>
     </body>
