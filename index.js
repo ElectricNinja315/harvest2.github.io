@@ -13,12 +13,6 @@ slider.oninput = function() {
 
     // make graph
     var items = [
-        // TODO: redo this so that the interval is every .2 or something clean, make the x-values strings, redo numbers
-
-
-        // TODO: so
-        // we hide the x-axis
-        // so the only way to know what's on the x-axis is the number above the graph
         {x: parseInt(this.value * 100), y: ((24 / this.value) - 3), label: "YOUR VALUE", group: 0},
         {x: 400, y: 3, group: 1},
         {x: 420, y: 2.7143, group: 1},
@@ -44,5 +38,37 @@ slider.oninput = function() {
 }
 
 slider2.oninput = function() {
-    output2.innerHTML = this.value;
+    percentNation = this.value;
+    percentWealth = parseInt(((-1 / ((.2 * this.value) + 1.2)) + 1.05) * 100);
+    console.log(percentNation)
+    console.log(percentWealth)
+    
+    output2.innerHTML = "Percentile of the Nation: " + percentNation + "<br>" + "Percent of Nation's Wealth: " + percentWealth
+
+    var items = [
+        {x: 1, y: percentNation, group: 1},
+        {x: 1, y: percentWealth, group: 0}
+    ]
+
+    var dataset = new vis.DataSet(items);
+    var options = {
+        style: 'bar',
+        stack: false,
+        barChart: {
+            sideBySide: true
+        },
+        drawPoints: false,
+        start: 1,
+        end: 1,
+        dataAxis: {
+            left: {
+                range: {
+                    min: 0,
+                    max: 100
+                }
+            }
+        }
+    }
+
+    var graph2d = new vis.Graph2d(output2, items, options)
 }
