@@ -3,9 +3,32 @@ var slider2 = document.getElementById("myRange2");
 var output = document.getElementById("demo");   // container of graph
 var output2 = document.getElementById("demo2");
 
+var keynesianTab = document.getElementById("Keynesian").style;
+var neoclassicalTab = document.getElementById("Neoclassical").style;
+var supplySideTab = document.getElementById("SupplySide").style;
+
+// for tabs
+function openKeynesian() {
+    keynesianTab.display = "block";
+    neoclassicalTab.display = "none";
+    supplySideTab.display = "none";
+}
+
+function openNeoclassical() {
+    keynesianTab.display = "none";
+    neoclassicalTab.display = "block";
+    supplySideTab.display = "none";
+}
+
+function openSupplySide() {
+    keynesianTab.display = "none";
+    neoclassicalTab.display = "none";
+    supplySideTab.display = "block";
+}
 
 // Update the current slider value (each time you drag the slider handle)
 slider.oninput = function() {
+    // phillips curve
     output.innerHTML = "Current unemployment: " + this.value + "%" + '<br>' + "Current inflation rate: " + ((24 / this.value) - 3).toFixed(2) + "%";
     console.log(this.value);      // prints the value of the slider
     console.log((24 / this.value) - 3);
@@ -30,13 +53,24 @@ slider.oninput = function() {
 
     var options = {
         start: 400,
-        end: 600
+        end: 600,
+        dataAxis : {
+            left: {
+                title: {
+                    text: "Inflation rate (percentage)",
+                }
+            }
+        }
     }
 
-    var graph2d = new vis.Graph2d(output, dataset, options)
+    var graph2d = new vis.Graph2d(output, dataset, options);
+
+    document.getElementById("PhillipsAxisLabel").style.display = "block";
+
 }
 
 slider2.oninput = function() {
+    // pareto principle
     percentNation = this.value;
     percentWealth = parseInt(((-1 / ((.2 * this.value) + 1.2)) + 1.05) * 100);
     console.log(percentNation)
@@ -45,8 +79,8 @@ slider2.oninput = function() {
     output2.innerHTML = "Percentile of the Nation: " + percentNation + "<br>" + "Percent of Nation's Wealth: " + percentWealth
 
     var items = [
-        {x: 1, y: percentNation, group: 1},
-        {x: 1, y: percentWealth, group: 0}
+        {x: 1, y: percentWealth, group: ": Percent of nation's wealth owned"},
+        {x: 1, y: percentNation, group: ": Top percent of the nation"}
     ]
 
     var dataset = new vis.DataSet(items);
@@ -66,6 +100,9 @@ slider2.oninput = function() {
                     max: 100
                 }
             }
+        },
+        legend: {
+            enabled: true,
         }
     }
 

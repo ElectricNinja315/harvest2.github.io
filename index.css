@@ -1,15 +1,29 @@
 body {
-    background-color: lightskyblue;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 500;
     font-size: 14px;
-    color: darkred;
 }
 
+button {
+    background-color: lightskyblue;
+    color: white;
+    padding: 12px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    width: 33%;
+}
 
+#Neoclassical {
+    display: none;
+}
+
+#SupplySide {
+    display: none;
+}
 
 .vis-time-axis {
-    visibility: hidden;
+    display: none;
 }
 
 .slidecontainer {
@@ -49,4 +63,17 @@ body {
     height: 25px; /* Slider handle height */
     background: #4CAF50; /* Green background */
     cursor: pointer; /* Cursor on hover */
+}
+
+#demo, #demo2 {
+    width: 90%
+}
+
+
+#PhillipsAxisLabel {
+    display: none;
+}
+
+table, td {
+    border: 0.5px solid lightgrey;
 }
