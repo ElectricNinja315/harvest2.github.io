@@ -69,6 +69,11 @@ button {
 
 #PhillipsAxisLabel {
     display: none;
+    margin: 0 auto;
+}
+#LafferAxis {
+    margin: 0 auto;
+    display: none;
 }
 
 table, td {
