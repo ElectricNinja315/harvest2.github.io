@@ -26,9 +26,6 @@ button {
     display: none;
 }
 
-.slidecontainer {
-    width: 100%; /* Width of the outside container */
-}
 
 /* The slider itself */
 .slider {
@@ -65,7 +62,7 @@ button {
     cursor: pointer; /* Cursor on hover */
 }
 
-#demo, #demo2 {
+.visgraph {
     width: 90%
 }
 
