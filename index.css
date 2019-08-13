@@ -22,7 +22,7 @@ button {
     display: none;
 }
 
-.vis-time-axis {
+.visgraph.vis-time-axis {
     display: none;
 }
 
@@ -66,11 +66,26 @@ button {
     width: 90%
 }
 
+.visgraph2 {
+    width: 90%;
+}
+
 
 #PhillipsAxisLabel {
     display: none;
     margin: 0 auto;
 }
+
+#labelA {
+    display: none;
+    margin: 0 auto;
+}
+
+#labelB {
+    display: none;
+    margin: 0 auto;
+}
+
 #LafferAxis {
     margin: 0 auto;
     display: none;

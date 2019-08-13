@@ -1,9 +1,13 @@
 var slider = document.getElementById("myRange");
 var slider2 = document.getElementById("myRange2");
 var slider3 = document.getElementById("myRange3");
+var slider4 = document.getElementById("countryA");
+var slider5 = document.getElementById("countryB");
 var output = document.getElementById("demo");   // container of graph
 var output2 = document.getElementById("demo2");
 var output3 = document.getElementById("demo3");
+var output4 = document.getElementById("demoA");
+var output5 = document.getElementById("demoB");
 
 var keynesianTab = document.getElementById("Keynesian").style;
 var neoclassicalTab = document.getElementById("Neoclassical").style;
@@ -159,6 +163,9 @@ slider3.oninput = function() {
         end: 100,
        dataAxis: {
             left: {
+                title: {
+                    text: "Revenue ($)"
+                },
                 range: {
                     min: 0,
                     max: 142
@@ -169,4 +176,76 @@ slider3.oninput = function() {
     var Graph2d = new vis.Graph2d(output3, dataset, options);
 
     document.getElementById("LafferAxis").style.display = "block";
+}
+
+slider4.oninput = function() {
+    output4.innerHTML = "Number of pencils: " + this.value + "<br>" + "Number of pens without trade: " + ((24 - this.value) / 2) + "<br>" + "Number of pens with trade: " + (24 - this.value)
+
+    var items = [
+        {x: parseInt(this.value), y: (24 - this.value) / 2, group: ": your value"},
+        {x: 0, y: 12, group: ": without trade"},
+        {x: 24, y: 0, group: ": without trade"},
+        {x: parseInt(this.value), y: (24 - parseInt(this.value)), group: ": your value"},
+        {x: 0, y: 24, group: ": with trade"},
+        {x: 24, y: 0, group: ": with trade"},
+    ]
+
+    var dataset = new vis.DataSet(items)
+    var options = {
+        start: 0,
+        end: 24,
+        dataAxis: {
+            left: {
+                title: {
+                    text: "Pens"
+                },
+                range: {
+                    min: 0,
+                    max: 24
+                }
+            }
+        },
+        legend: {
+            enabled: true,
+        }
+    }
+
+    var Graph2d = new vis.Graph2d(output4, dataset, options);
+    document.getElementById("labelA").style.display = "block";
+}
+
+slider5.oninput = function() {
+    output5.innerHTML = "Number of pens: " + this.value + "<br>" + "Number of pencils without trade: " + ((24 - this.value) / 2) + "<br>" + "Number of pencils with trade: " + (24 - this.value);
+    
+    var items = [
+        {x: (24 - this.value) / 2, y: parseInt(this.value), group: ": your value"},
+        {x: 0, y: 24, group: ": without trade"},
+        {x: 12, y: 0, group: ": without trade"},
+        {x: 24 - parseInt(this.value), y: parseInt(this.value), group: ": your value"},
+        {x: 0, y: 24, group: ": with trade"},
+        {x: 24, y: 0, group: ": with trade"},
+    ]
+
+    var dataset = new vis.DataSet(items)
+    var options = {
+        start: 0,
+        end: 24,
+        dataAxis: {
+            left: {
+                title: {
+                    text: "Pens"
+                },
+                range: {
+                    min: 0,
+                    max: 24
+                }
+            }
+        },
+        legend: {
+            enabled: true,
+        }
+    }
+
+    var Graph2d = new vis.Graph2d(output5, dataset, options);
+    document.getElementById("labelB").style.display = "block";
 }
