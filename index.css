@@ -22,14 +22,13 @@ button {
     display: none;
 }
 
-.visgraph.vis-time-axis {
+.visgraph .vis-time-axis {
     display: none;
 }
 
 
 /* The slider itself */
 .slider {
-    -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
     width: 100%; /* Full-width */
     height: 25px; /* Specified height */
