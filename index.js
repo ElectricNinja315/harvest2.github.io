@@ -3,11 +3,15 @@ var slider2 = document.getElementById("myRange2");
 var slider3 = document.getElementById("myRange3");
 var slider4 = document.getElementById("countryA");
 var slider5 = document.getElementById("countryB");
+var slider6 = document.getElementById("myRange4");
+var slider7 = document.getElementById("myRange5");
 var output = document.getElementById("demo");   // container of graph
 var output2 = document.getElementById("demo2");
 var output3 = document.getElementById("demo3");
 var output4 = document.getElementById("demoA");
 var output5 = document.getElementById("demoB");
+var output6 = document.getElementById("demo4");
+var output7 = document.getElementById("demo5");
 
 var keynesianTab = document.getElementById("Keynesian").style;
 var neoclassicalTab = document.getElementById("Neoclassical").style;
@@ -248,4 +252,94 @@ slider5.oninput = function() {
 
     var Graph2d = new vis.Graph2d(output5, dataset, options);
     document.getElementById("labelB").style.display = "block";
+}
+
+slider6.oninput = function() {
+    output6.innerHTML = "";
+
+    x = this.value - 50
+
+    var items = [
+        {x: 0 + x, y: 0, group: ": supply"},
+        {x: 10 + x, y: 1, group: ": supply"},
+        {x: 20 + x, y: 4, group: ": supply"},
+        {x: 50 + x, y: 25, group: ": supply"},
+        {x: 70 + x, y: 49, group: ": supply"},
+        {x: 100 + x, y: 100, group: ": supply"},
+        {x: 0, y: 100, group: ": demand"},
+        {x: 30, y: 49, group: ": demand"},
+        {x: 50, y: 25, group: ": demand"},
+        {x: 80, y: 4, group: ": demand"},
+        {x: 90, y: 1, group: ": demand"},
+        {x: 100, y: 0, group: ": demand"}
+    ]
+
+    var dataset = new vis.DataSet(items);
+
+    var options = {
+        start: -10,
+        end: 110,
+        dataAxis: {
+            left: {
+                title: {
+                    text: "Price"
+                },
+                range: {
+                    min: -10,
+                    max: 110
+                }
+            }
+        },
+        legend: {
+            enabled: true,
+        }
+    }
+
+    var Graph2d = new vis.Graph2d(output6, dataset, options);
+    document.getElementById("StandardAxis").style.display = "block";
+}
+
+slider7.oninput = function() {
+    output7.innerHTML = "";
+
+    x = this.value - 50
+
+    var items = [
+        {x: 48 + x, y: 0, group: ": supply"},
+        {x: 49 + x, y: 1, group: ": supply"},
+        {x: 50 + x, y: 4, group: ": supply"},
+        {x: 51 + x, y: 25, group: ": supply"},
+        {x: 52 + x, y: 49, group: ": supply"},
+        {x: 53 + x, y: 100, group: ": supply"},
+        {x: 0, y: 100, group: ": demand"},
+        {x: 30, y: 49, group: ": demand"},
+        {x: 50, y: 25, group: ": demand"},
+        {x: 80, y: 4, group: ": demand"},
+        {x: 90, y: 1, group: ": demand"},
+        {x: 100, y: 0, group: ": demand"}
+    ]
+
+    var dataset = new vis.DataSet(items);
+
+    var options = {
+        start: -10,
+        end: 110,
+        dataAxis: {
+            left: {
+                title: {
+                    text: "Price"
+                },
+                range: {
+                    min: -10,
+                    max: 110
+                }
+            }
+        },
+        legend: {
+            enabled: true,
+        }
+    }
+
+    var Graph2d = new vis.Graph2d(output7, dataset, options);
+    document.getElementById("SupplyAxis").style.display = "block";
 }

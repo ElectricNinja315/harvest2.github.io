@@ -25,6 +25,12 @@ button {
 .visgraph .vis-time-axis {
     display: none;
 }
+.visgraph3 .vis-time-axis {
+    display: block;
+}
+.visgraph3 .vis-y-axis {
+    display: block;
+}
 
 
 /* The slider itself */
@@ -67,6 +73,10 @@ button {
 
 .visgraph2 {
     width: 90%;
+}
+
+.visgraph3 {
+    width: 50%;
 }
 
 
